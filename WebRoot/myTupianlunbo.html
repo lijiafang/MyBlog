@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>myTupianlunbo.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="jslib/jquery.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<style type="text/css">
+		*{
+			margin:0px;
+			padding:0px;
+		}
+		#container{
+			width:300px;
+		}
+		#slider{
+			width:auto;
+			height: 300px;
+		}
+		img{
+		 	width:300px;
+			height: 300px;
+		}
+		#sliderBtn{
+			width:auto;
+			height:20px;
+		}
+		#sliderBtn li{
+			border:1px solid #ccc;
+			list-style-type:none;
+			float: right;
+			width:15px;
+			background:rgba(12,12,12,0.1);
+			color:rgba(12,12,12,0.4);
+			margin: 0px 5px;
+		}
+	</style>
+  </head>
+  
+  <body>
+  	<div id="container">
+    	<ul id="slider">
+    		<li><img src="img/p1.jpg" /></li>
+    		<li><img src="img/p2.jpg" /></li>
+    		<li><img src="img/p3.jpg" /></li>
+    		
+    	</ul>
+    	<ul id="sliderBtn">
+    		<li>3</li>
+    		<li>2</li>
+    		<li>1</li>
+    	</ul>
+    </div>
+    <script type="text/javascript">
+    
+    	window.onload=function(){
+    		slider(1);
+    		var i=1;
+    		setInterval(function(){
+    			if(i==3){
+    				i=1;
+    				slider(i);
+    			}else{
+    				i++;
+    				slider(i);
+    			}
+    		},2000);
+    		
+    		var btn=$("#sliderBtn");
+    		btn.mouseover(function(e){
+    			var all=$("#sliderBtn li");
+    			for(var j=0;j<all.length;j++){
+    				if(e.target==all[j]){
+    					all[j].style.background="rgba(12,12,12,0.3)";
+    				}else{
+    					all[j].style.background="rgba(12,12,12,0.1)";
+    				}
+    			}
+    			slider(e.target.innerHTML);
+    		});
+    		btn.click(function(e){
+    			slider(e.target.innerHTML);
+    		});
+    	};
+    	function slider(i){
+	    	for(var m=1;m<4;m++){
+	    		if(m==i){
+	    			$('#slider li:nth-child('+m+')').css("display","block");
+	    		}else{
+	    			$('#slider li:nth-child('+m+')').css("display","none");
+	    		}
+	    	}
+    	}
+    </script>
+  </body>
+</html>

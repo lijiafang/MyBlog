@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <base href="<%=basePath%>">
+    <title>李佳芳的个人博客-技术笔记</title>
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0"> 
+	<meta name="keywords" content="李佳芳,个人博客,晨昏下,css3,html5" />
+	<meta name="description" content="这是一个有关个人网站，仅供学习" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/manageLog.css">
+<script type="text/javascript" src="js/main.js"></script>
+<script src="js/jquery.min.js"></script>
+  </head>
+  
+  <body>
+    <header>
+	<div class="top">
+	</div>
+	<div class="center">
+		<div class="logo">
+			<h1>晨&昏下</h1>
+		</div>
+		 <nav id="nav">
+		   <ul>
+		    <li><a href="servlet/LogController?type=homepage">网站首页</a></li>
+		    <li><a href="aboutMe.html">我的故事</a></li>
+		    <li><a href="servlet/LogController?type=show&category=feeling">心情小记</a></li>
+		    <li><a href="servlet/LogController?type=show&category=study">技术笔记</a></li>
+		    <li><a href="servlet/MessageController?type=show">留言板</a></li>  
+		   </ul>
+		  <script src="js/silder.js"></script><!-- /* 获取当前页导航 高 亮显示标题 */ -->   
+		 </nav>
+	 	<div class="line"></div>
+	 	
+	 	
+ </div>
+ <div class="animation">
+	  		<div class="bar"></div>
+		  	<ul>
+		  		<li class="n1"><p>初春</p></li>
+		  		<li class="n2"><p>仲夏</p></li>
+		  		<li class="n3"><p>秋半</p></li>
+		  		<li class="n4"><p>冬已</p></li>
+		  	</ul>
+	  </div>
+</header>
+<article>
+	<div class="t_nav">
+		<span>新鲜事，新鲜时</span>
+		<a href="<%=basePath %>blog.html">网站首页</a>
+		<a href="#" class="current">发布文章</a>
+	</div>
+	<section class="section">
+		<h2>我又有新想法了</h2>
+		<div id="form1">
+		<form id="form"></form>
+			<ul>
+				<li><span>文章标题：</span><input type="text" name="title" id="title" required="required" form="form"/></li>
+				<li><span>文章主题：</span>
+					<select name="theme" id="theme" form="form">
+						<option value="feeling">心情小记</option>
+						<option value="study">技术笔记</option>
+					</select>
+				</li>
+				<li><span>请选择要上传的文章：</span><input type="file" id="log"/></li>
+				<li><div id="result"></div></li>
+			</ul>
+			<button type="button" id="submit" form="form">发表</button>
+		</div>
+		
+	</section>
+	<aside>
+		<ul>
+			<p>这里可能会放上我的简介</p>
+		</ul>
+	</aside>
+</article>
+<footer>
+<div class="footer_badge"><p>晨 &昏下</p></div>
+
+<div class="footer_bottom">
+	<div class="copyrights">Wedding Theme by <a href="/" target="_blank">DanceSmile</a></div>
+	 <div class="footer_links">
+		 <ul>
+		    <li><a href="servlet/LogController?type=homepage">网站首页</a></li>
+		    <li><a href="aboutMe.html">我的故事</a></li>
+		    <li><a href="servlet/LogController?type=show&category=feeling">心情小记</a></li>
+		    <li><a href="servlet/LogController?type=show&category=study">技术笔记</a></li>
+		    <li><a href="servlet/MessageController?type=show">留言板</a></li>  
+		  </ul>
+	 </div>
+</div>
+</footer>
+<script type="text/javascript">
+window.onload=function(){
+check();
+};
+function check(){
+	var btn=document.getElementById("submit");
+	btn.addEventListener("click",function(){
+		var title=document.getElementById("title");
+		//var theme=document.getElementById("theme").value;
+		var log=document.getElementById("log");
+		if(!title.value){
+			myAlert("提示","标题是必须选择的");
+			return;
+		}
+		 if(log.value){
+			var name=log.files[0].name;
+		}else{
+			myAlert("提示","你还没有选择文章呢");
+			return;
+		}
+		var option={
+			url:"servlet/LogController?type=add&log="+name,
+	   				type:"post",
+	   				dataType:"text",
+	   				data:$("#form").serialize(),
+	   				success:function(data){
+	   					//alert(data);
+	   					if(data){
+	   						myAlert("","发表成功了，快去博客里瞅瞅吧~如果有好的想法，还可以继续发表滴");
+	   						title.value="";
+	   						log.value="";
+	   					}else{
+	   						myAlert("","等下再试吧，这会儿网络不给力呀……");
+	   					}
+	   				}
+	   				
+		};
+		$.ajax(option);
+		/* alert(title);
+		alert(theme);
+		alert(name); */ 
+		
+	},false);
+}
+</script>
+  </body>
+</html>

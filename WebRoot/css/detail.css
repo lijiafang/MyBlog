@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+#content{
+	margin:20px;
+	padding:0px 20px;
+	font-size:20px;
+	position:relative;
+}
+#content h2{
+	text-align:center;
+	margin:10px 0px;
+}
+#content .logTxt{
+	padding:5px 20px;
+	text-align:center;
+}
+#content .theme{
+	display:block;
+	text-align:right;
+}
+#content .time{
+	float:right;
+}

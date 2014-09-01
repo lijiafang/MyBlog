@@ -1,0 +1,32 @@
+@CHARSET "UTF-8";
+.content{
+			width:550px;
+			overflow:hidden;
+			margin:0px auto;
+		}
+		.content h2{
+			border-bottom:1px solid rgb(150,196,176);
+		}
+		.content li{
+			padding:20px;
+			margin:40px 0px;
+			font-size:20px;
+			position:relative;
+		}
+		.content pre{
+			padding:10px;
+		}
+		.content .time{
+			float:right;
+		}
+		.more_page{
+		cursor:pointer;
+background: url(../images/page_more.png) no-repeat;
+color: #704d20;
+float: right;
+line-height: 30px;
+height: 34px;
+clear: both;
+position:absolute;
+right:20px;top:20px;
+}

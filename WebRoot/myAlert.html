@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>myAlert.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<style type="text/css">
+	.msgDiv {
+		border: 1px solid rgb(51, 102, 153);
+		border-radius:10px;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		font-size: 12px;
+		line-height: 25px;
+		font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+		margin-left: -225px;
+		margin-top: -75px;
+		width: 400px;
+		height: 100px;
+		text-align: center;
+		z-index: 10001;
+		background: white;
+	}
+	.msgTitle {
+		margin: 0px;
+		padding: 5px;
+		border-top-left-radius:10px;
+		border-top-right-radius:10px;
+		height: 18px;
+		line-height:18px;
+		color: white;
+		cursor: pointer;
+		background: rgb(51, 102, 153);
+		text-align: center;
+	}
+	.closeTxt{
+		position:absolute;
+		right: 10px;
+	}
+	.bgDiv{
+		border:1px solid red;
+		background:rgba(51, 102, 153,0.1) 
+	}
+	</style>
+  </head>
+  
+  <body>
+    This is my HTML page. <br>
+    <script type="text/javascript" language="javascript">
+    myAlert("a","a");
+    /* alert(screen.height);
+	function sAlert(strTitle,strContent){
+		var bgDiv=document.createElement("div");
+		bgDiv.className="bgDiv";
+		bgDiv.style.width=screen.width+"px";
+		bgDiv.style.height=screen.height+"px";
+		
+ 		var msgObj=document.createElement("div");
+		 msgObj.setAttribute("id","msgDiv");
+		 msgObj.className="msgDiv";
+ 		
+ 		var title=document.createElement("h4");
+ 		title.setAttribute("id","msgTitle");
+ 		title.className="msgTitle";
+ 		title.title = "点击关闭";
+ 		title.innerHTML=strTitle;
+	 	title.onclick=function(){
+			 document.getElementById("msgDiv").removeChild(title);
+		 	 document.body.removeChild(msgObj);
+		 	 document.body.removeChild(bgDiv);
+		 };
+		 
+		 var close=document.createElement("span");
+		 close.innerHTML="关闭";
+		 close.className="closeTxt";
+		 
+		 var txt=document.createElement("p");
+	 	 txt.style.margin="1em 0";
+		 txt.setAttribute("id","msgTxt");
+		 txt.innerHTML=strContent;
+		 
+		document.body.appendChild(bgDiv); 
+ 	document.body.appendChild(msgObj);
+ 	document.getElementById("msgDiv").appendChild(title);
+ 	document.getElementById("msgTitle").appendChild(close);
+ 	document.getElementById("msgDiv").appendChild(txt);
+} */
+	function myAlert(strTitle,strContent){
+		
+		var bgDiv=document.createElement("div");
+		bgDiv.style.width=screen.width+"px";
+		bgDiv.style.height=screen.height+"px";
+		bgDiv.className="bgDiv";
+		//bgDiv.style.background="rgba(51, 102, 153,0.1)"; 
+		//bgDiv.style.background="gray";
+ 		
+		var msgObj=document.createElement("div");
+		 msgObj.setAttribute("id","msgDiv");
+		 msgObj.className="msgDiv";
+ 		
+ 		var title=document.createElement("h4");
+ 		title.setAttribute("id","msgTitle");
+ 		title.className="msgTitle";
+ 		title.title = "点击关闭";
+ 		title.innerHTML=strTitle;
+	 	title.onclick=function(){
+			 document.getElementById("msgDiv").removeChild(title);
+			 document.body.removeChild(bgDiv);
+		 	 document.body.removeChild(msgObj);
+		 };
+		 
+		 var close=document.createElement("span");
+		 close.innerHTML="关闭";
+		 close.className="closeTxt";
+		 
+		 var txt=document.createElement("p");
+	 	 txt.style.margin="1em 0";
+		 txt.setAttribute("id","msgTxt");
+		 txt.innerHTML=strContent;
+		 
+		 document.body.appendChild(bgDiv);
+	 	document.body.appendChild(msgObj);
+	 	document.getElementById("msgDiv").appendChild(title);
+	 	document.getElementById("msgTitle").appendChild(close);
+	 	document.getElementById("msgDiv").appendChild(txt);
+	}
+</script>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>gotoTop.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+<style type="text/css">
+*{margin: 0px;padding:0px;}
+#goTop{
+font-size:12px;
+ width:20px; 
+ height:55px;
+  background:#0950A2; 
+  color:#fff; 
+  line-height:14px; 
+  position:fixed; 
+  bottom:30px; 
+  display:none; 
+  cursor:pointer; 
+  text-align:center; 
+  padding:5px 0; 
+  z-index:1; 
+  _position:absolute;
+  _top:expression(eval(document.compatMode && document.compatMode == \'CSS1Compat\') ? documentElement.scrollTop + (documentElement.clientHeight - this.clientHeight) - 30 : document.body.scrollTop + (document.body.clientHeight - this.clientHeight) - 30);
+}
+div{
+height: 300px;
+border:1px solid red;
+}
+</style>
+  </head>
+  
+  <body>
+  <div>a</div>
+   <div id="a">a</div>
+    <div>a</div>
+     <div>a</div>
+     
+      <div>a</div>
+       <div>a</div>
+  <div id="goTop">返<br />回<br />顶<br />部</div>
+  <script type="text/javascript">
+  //test();
+  function test(){
+  	var test=document.getElementById("a");
+  	alert("offsetTop"+test.offsetTop);
+  	alert("offsetLeft"+test.offsetLeft);
+  	alert(test.scrollTop);
+  }
+    function goTop(){  
+		var _btn = document.getElementById("goTop");  
+		if (document.documentElement && document.documentElement.scrollTop) {  
+			var _con = document.documentElement;  
+		} else if (document.body) {  
+			var _con = document.body;  
+		}  
+		window.onscroll = set;  
+		_btn.style.left = document.documentElement.scrollWidth/2 + 500 + "px";  
+		/* _btn.onclick=function(){
+			var test=document.getElementById("a");
+		alert(test.offsetTop);
+			alert(test.scrollTop);
+		} */
+		_btn.onclick = function (){  
+			_btn.style.display = "none";  
+			window.onscroll = null;
+			_con.scrollTop=0;
+			window.onscroll=set;  
+			/* this.timer = setInterval(function() {  
+			
+				_con.scrollTop -= Math.ceil(_con.scrollTop * 0.3);  
+				if (_con.scrollTop == 0) clearInterval(_btn.timer, window.onscroll = set);  
+			},10);  */ 
+		};  
+	function set() {  
+		_btn.style.display = _con.scrollTop ? 'block': "none";  
+	}  
+};  
+//document.write("");  
+window.onscroll = goTop;  
+</script>
+  </body>
+</html>
+
+ <!-- <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <TITLE> New Document </TITLE>
+  <SCRIPT LANGUAGE="JavaScript">
+  <!--
+ function test(){
+  var oIframe = document.getElementById("div1");
+  alert(oIframe.offsetTop);
+  alert(oIframe.scrollTop);
+ }
+  //-->
+  </SCRIPT>
+ </HEAD>
+ <BODY style="border:1px red solid;padding:20px;margin:0px;">
+ <div id="div1" style="border:1px blue solid;height:400px;width:200px;overflow:auto">
+ <iframe id="iframe1" src="http://www.baidu.com" width="400" height="500" style="border:1px red solid;" scrolling="no">
+ </iframe>
+ </div>
+ <input type="button" value="OK" onclick="test()"/>
+ </BODY>
+</HTML> -->

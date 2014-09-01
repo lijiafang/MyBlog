@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>textDecoration.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<style>
+		a{
+			text-decoration:none;
+		}
+		#a{
+			width:100%;
+			height:50px;
+			border: 1px solid red;
+		}
+		#b{
+			width:12em;
+			/* 保证文本垂直居中 */
+			height:50px;
+			line-height: 50px;
+			/* 保证元素水平居中 */
+			margin:0px auto;
+			border: 1px solid green;
+			/* 要是想出现。。。代替显示不出来的文字的效果，必须保证文本不换行，否则，就会默认为换行而不显示 */
+			white-space:nowrap; 
+			overflow:hidden;
+			text-overflow:ellipsis;
+		}
+		#c{
+		border: 1px solid green;
+			float: right;
+		}
+		#out{
+		width:500px;
+		height:200px;
+			border: 1px solid green;
+			position: relative;
+		}
+		#left{
+			border: 1px solid red;
+			width:100px;
+			height:200px;
+			float:left;
+			
+		}
+		#right{
+			border: 1px solid blue;
+			width:100px;
+			height:100px;
+			
+			position:absolute;
+bottom:0px;
+right:0px;
+		}
+	</style>
+  </head>
+  
+  <body>
+    <a href="#">去掉a的默认下划线 <br></a>
+    <div id="a">
+    	<div id="b">
+    	his is some long text that will not fit in the box
+	    	
+    	</div>
+    	<div id="c">
+	    		整个元素居右
+	    	</div>
+    	
+    </div>
+    <div id="out">
+    	<div id="left">
+    	left
+	    	
+    	</div>
+    	<div id="right">
+	    		right
+	    	</div>
+    	
+    </div>
+  </body>
+</html>

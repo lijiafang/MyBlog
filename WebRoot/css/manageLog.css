@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+
+#form1{
+	width:500px;
+	margin:40px auto;
+	font-size:20px;
+}
+#form1 li{
+	height:50px;
+	line-height:50px;
+}
+h2{
+	font-size:24px;
+	padding:0px 75px;
+}
+#form1 button{
+	float:right;
+			width:80px;
+			height:40px;
+			line-height:40px;
+			text-align:center;
+			background:rgb(150,196,176);
+			color:white;
+			font-size:20px;
+			border-radius:5px;
+			margin:10px 10px 0px;
+}

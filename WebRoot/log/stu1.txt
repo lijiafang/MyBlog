@@ -1,0 +1,49 @@
+mysql -u root -p 
+password:lijiafang
+show databases;
+create database mysqldate;
+use mysqldate
+show tables;
+create table mytable(name char(20),number char(20));
+describe mytable;
+load data lacal infile "F:\\data.txt" into table mytable;
+insert mytable values('lijiafang','13111374');
+select * from mytable;
+select * from mytable order by number asc;(升序）
+select * from mytable order by number desc;(降序）
+select count(number) as totalnumber from mytable;
+select sum(number) as tatalnumber from mytable;(avg,max,min用法同）
+select * from mytable limit 1,4;从第1条到第5条记录，mysql记录从0开始算起，第一个参数是偏移量，第二个参数是查询总数
+delete from mytable where number='13111371';
+update mytable set number='123456' where name='lijiafang';
+
+增加一个字段
+
+alter table mytable add column (sex char(20)）;
+指定一个字段的插入位置
+alert table table_name add column 字段名 字段类型 after 某字段;
+删除一个字段
+alert table table_name drop 字段名;
+x修改字段名称，类型
+alert table table_name change 旧字段名 新字段名 新字段的类型;
+修改标的名字
+alert table table_name rename to new_table_name;
+一次性清空表中的所有数据
+truncate table table_name;
+
+alter table mytable add primary key(number);
+
+drop database mysqldate;
+
+给ID设置默认值：
+ alter table tb_name  alter column column_name set   default 'N'
+设置ID为自增长和主键： 
+alter table tb_name modify id  priamry key not null  auto_increment （ps: 主键和自增长必须同时存在）
+
+显示某个表创建时的全部信息
+show create table table_name;
+查看表的具体属性信息及表中个字段的描述
+describe table_name;
+
+表中信息翻倍
+insert into 表名（字段1，字段2.，……）select 字段1，字段2，…… from 表名

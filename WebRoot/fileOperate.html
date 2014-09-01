@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>fileOperate.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+     
+     <input id="selFile" type="file" onchange ="showPath()"/>
+	<div id="path"></div>
+	<div id="aa"></div>
+	<script type="text/javascript">
+		function showPath(){//openfileDialog 和获取路径
+		    document.getElementById("path").innerText=document.getElementById("selFile").value;
+		}
+		
+		
+    </script>
+   <!--  <form action="/home/index" method="POST" novalidate="true">
+        <input type="file" multiple="multiple" name="fileDemo" id="fileDemo" /><br/>
+        <input type="button" value="获取文件的名字" id="btnGetFile"/>
+        <div id="result"></div>
+    </form>
+    <hr/>
+    <script type="text/javascript">
+        $(function () {
+            $("#btnGetFile").click(function (e) {
+                var fileList = document.getElementById("fileDemo").files;
+                for (var i = 0; i < fileList.length; i++) {
+                    if (!(/image\/\w+/.test(fileList[i].type))) {
+                         $("#result").append("<span>type:"+fileList[i].type+"--******非图片类型*****--name:"+fileList[i].name+"--size:"+fileList[i].size+"</span><br />");
+                    }
+                    else {
+                        $("#result").append("<span>type:"+fileList[i].type+"--name:"+fileList[i].name+"--size:"+fileList[i].size+"</span><br />");
+                    }
+                }
+            });
+        });
+
+    </script> -->
+    <!--  <input type="file" name="fileDemo" id="fileDemo" multep/>
+    <input type="button" value="readAsDataURL" id="readAsDataURL" onclick="showDataByURL();"/>
+    <input type="button" value="readAsBinaryString"  id="readAsBinaryString" onclick="showDataByBinaryString();"/>
+    <input type="button" value="readAsText"  id="readAsText" onclick="showDataByText();"/>
+    <pre id="result" style="width:200px;">
+        
+    </pre>
+    <script type="text/javascript">
+        
+        if(typeof FileReader == "undified") {
+            alert("您老的浏览器不行了！");
+        }
+
+        function showDataByURL() {
+            var resultFile = document.getElementById("fileDemo").files[0];
+            if (resultFile) {
+                var reader = new FileReader();
+                
+                reader.readAsDataURL(resultFile);
+                reader.onload = function (e) {
+                    var urlData = this.result;
+                    document.getElementById("result").innerHTML += + urlData + "' alt='" + resultFile.name ;
+                }; 
+               
+            }
+            
+        } 
+
+        function showDataByBinaryString() {
+              var resultFile = document.getElementById("fileDemo").files[0];
+            if (resultFile) {
+                var reader = new FileReader();
+                //异步方式，不会影响主线程
+                reader.readAsBinaryString(resultFile);
+                
+                reader.onload = function(e) {
+                    var urlData = this.result;
+                    document.getElementById("result").innerHTML += urlData;
+                };
+            }
+        }
+
+
+        function showDataByText() {
+            var resultFile = document.getElementById("fileDemo").files[0];
+            if (resultFile) {
+                var reader = new FileReader();
+
+                reader.readAsText(resultFile,"utf-8");
+                reader.onload = function (e) {
+                    var urlData = this.result;
+                    document.getElementById("result").innerHTML += urlData;
+                };
+            }
+        }
+        </script> -->
+  </body>
+</html>

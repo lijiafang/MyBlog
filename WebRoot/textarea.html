@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>textarea.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<style type="text/css">
+	*{margin:0px;padding:0px;}
+		.message{
+			width:550px;
+			overflow:hidden;
+			margin:20px auto;
+			border:1px solid red;
+		}
+		.message textarea {
+			margin: 0px auto;
+			padding:10px;
+			width:95%;
+			height:100px; 
+			border-radius:10px;
+		}
+		.message button {
+			float:right;
+			width:80px;
+			height:40px;
+			line-height:40px;
+			text-align:center;
+			background:rgb(150,196,176);
+			color:white;
+			font-size:20px;
+			border-radius:5px;
+		}
+		.message .relation{
+			float:left;
+			height:30px;
+			line-height: 30px;
+		}
+		.message .friendName{
+			width:200px;
+			border-radius:5px;
+			
+		}
+		#relationInfo,#textInfo{
+			float:left;
+			display:none;
+			color:red;
+		}
+		.message p{
+			height:30px;
+			line-height:30px;
+			float:right;
+		}
+	</style>
+  </head>
+  
+  <body>
+	    <form class="message">
+	    	<div class="relation">
+		    	<input type="radio" value="visitor" name="who"/><span>匿名</span>
+		    	<input type="radio" value="friend" name="who"/><span>好友</span>
+	    	</div>
+	    	<p>你还可以输入<span id="number">200</span>个字</p>
+	    	<textarea placeholder="说点什么吧" name="message"></textarea>
+	    	<span id="relationInfo">请点击“好友”填写您的昵称，或者点击“匿名”留言</span>
+	    	<span id="textInfo">请输入内容后留言</span>
+	    	<button id="submit">留言</button>
+	    </form>
+	   <script type="text/javascript">
+	   	window.onload=function(){
+	   		who();
+	   		leaveMessage();
+	   		count();
+	   	};
+	   	function who(){
+	   		var who=document.getElementsByClassName("relation")[0];
+	   		who.addEventListener("click",function(e){
+	   			var text=document.getElementsByClassName("friendName")[0];
+	   			if(e.target.value=="friend"){
+	   				if(text==undefined){
+		   				var friendName=document.createElement("input");
+		   				friendName.setAttribute("type","text");
+		   				friendName.className="friendName";
+		   				friendName.setAttribute("placeholder","请告诉我你的昵称~");
+		   				who.appendChild(friendName);
+		   			}
+	   			}
+	   			if(e.target.value=="visitor"){
+	   				if(text!=undefined){
+	   					who.removeChild(text);
+	   				}
+	   			}
+	   		},false);
+	   	}
+	   	function leaveMessage(){
+	  
+	   		var btn=document.getElementById("submit");
+	   		btn.addEventListener("click",function(e){
+	   		
+	   			var who=document.getElementsByName("who");
+	   			for(var i=0;i<who.length;i++){
+	   				if(who[i].checked){
+	   					break;
+	   				}
+	   			}
+	   			if(i==who.length){
+	   				alert("请点击“好友”填写您的昵称，或者点击“匿名”留言");
+	   				//document.getElementById("relationInfo").style.display="inline";
+	   			}
+	   			/* else{
+	   				document.getElementById("relationInfo").style.display="none";
+	   			} */
+	   			var text=document.getElementsByTagName("textarea")[0];
+	   			if(text.value==""){
+	   				alert("请输入内容后留言");
+	   				//document.getElementById("textInfo").style.display="inline";
+	   			}/* else{
+	   				document.getElementById("textInfo").style.display="none";
+	   			} */
+	   		},false);
+	   		
+	   	}
+	   	function count(){
+	   		var text=document.getElementsByTagName("textarea")[0];
+	   		var number=document.getElementById("number");
+	   		text.addEventListener("keydown",function(){
+	   			var value=text.value;
+	   			var num=0;
+	   			for(var i=0;i<value.length;i++){
+	   				if(value.charCodeAt(i)>255){
+	   					num+=2;
+	   				}else{
+	   					num+=1;
+	   				}
+	   			}
+	   			
+	   			number.innerHTML=(500-num)+"";
+	   		},false);
+	   	}
+	   </script>
+  </body>
+</html>
